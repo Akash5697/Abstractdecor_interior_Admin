@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import LeadsPanel from './components/LeadsPanel'
 import './App.css'
 
