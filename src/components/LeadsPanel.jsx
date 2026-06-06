@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import './LeadsPanel.css';
 
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000/api';
+
 export default function LeadsPanel() {
   const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -14,7 +16,7 @@ export default function LeadsPanel() {
   const fetchLeads = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/offers');
+      const response = await fetch(`${API_BASE_URL}/offers`);
       
       if (!response.ok) {
         throw new Error(`API error: ${response.status}`);
@@ -47,7 +49,7 @@ export default function LeadsPanel() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/offers/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/offers/${id}`, {
         method: 'DELETE',
       });
 
